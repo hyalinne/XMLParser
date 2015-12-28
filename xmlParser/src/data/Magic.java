@@ -5,15 +5,15 @@ import org.w3c.dom.Element;
 public class Magic {
 	private String name;
 	private int length;
-	private MagicKind[] magicLevel;
+	private MagicKind[] magicKind;
 	
 	public Magic(Element item) {
 		// TODO Auto-generated constructor stub
 		this.name = item.getNodeName();
 		this.length = item.getChildNodes().getLength()/2;
-		this.magicLevel = new MagicKind[this.length];
+		this.magicKind = new MagicKind[this.length];
 		for(int i = 0; i < this.length; i++) {
-			this.magicLevel[i] = new MagicKind((Element) item.getChildNodes().item(i*2 + 1));
+			this.magicKind[i] = new MagicKind((Element) item.getChildNodes().item(i*2 + 1));
 		}
 	}
 
@@ -33,12 +33,12 @@ public class Magic {
 		this.length = length;
 	}
 
-	public MagicKind[] getMagicLevel() {
-		return magicLevel;
+	public MagicKind[] getMagicKind() {
+		return magicKind;
 	}
 
-	public void setMagicLevel(MagicKind[] magicLevel) {
-		this.magicLevel = magicLevel;
+	public void setMagicKind(MagicKind[] magicKind) {
+		this.magicKind = magicKind;
 	}
 
 }
