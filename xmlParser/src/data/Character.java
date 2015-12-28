@@ -1,5 +1,8 @@
 package data;
 
+import java.io.BufferedWriter;
+import java.io.IOException;
+
 import org.w3c.dom.Element;
 
 public class Character {
@@ -15,36 +18,20 @@ public class Character {
 		this.magic = new Magic((Element) character.getElementsByTagName("magic").item(0));
 	}
 
-	public String getName() {
-		return name;
+	public void write(BufferedWriter out) {
+		try {
+			// start tag
+			out.write("\t<" + this.name + ">\n");
+			// race
+			race.write(out);
+			// stat
+			stat.write(out);
+			// magic
+			magic.write(out);
+			// end tag
+			out.write("\t</" + this.name + ">\n");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public Race getRace() {
-		return race;
-	}
-
-	public void setRace(Race race) {
-		this.race = race;
-	}
-
-	public Stat getStat() {
-		return stat;
-	}
-
-	public void setStat(Stat stat) {
-		this.stat = stat;
-	}
-
-	public Magic getMagic() {
-		return magic;
-	}
-
-	public void setMagic(Magic magic) {
-		this.magic = magic;
-	}
-	
 }

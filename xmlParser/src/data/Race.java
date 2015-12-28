@@ -1,5 +1,8 @@
 package data;
 
+import java.io.BufferedWriter;
+import java.io.IOException;
+
 import org.w3c.dom.Element;
 
 public class Race {
@@ -16,30 +19,17 @@ public class Race {
 			this.raceType[i] = new RaceType((Element) item.getChildNodes().item(i*2 + 1));
 		}
 	}
-
-	public RaceType[] getRaceType() {
-		return raceType;
-	}
-
-	public void setRaceType(RaceType[] raceType) {
-		this.raceType = raceType;
-	}
-
-	public int getLength() {
-		return length;
-	}
-
-	public void setLength(int length) {
-		this.length = length;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}	
 	
-	
+	public void write(BufferedWriter out) {
+		try {
+			out.write("\t\t<" + this.name + ">\n");
+			for(int i = 0; i < this.length; i++) {
+				this.raceType[i].write(out);
+			}
+			out.write("\t\t</" + this.name + ">\n");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
 }

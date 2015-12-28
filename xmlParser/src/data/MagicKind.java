@@ -1,12 +1,15 @@
 package data;
 
+import java.io.BufferedWriter;
+import java.io.IOException;
+
 import org.w3c.dom.Element;
 
 public class MagicKind {
 	private String name;
 	private int length;
 	private MagicLevel[] magicLevel;
-	
+
 	public MagicKind(Element item) {
 		// TODO Auto-generated constructor stub
 		this.name = item.getNodeName();
@@ -17,28 +20,17 @@ public class MagicKind {
 		}
 	}
 
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public int getLength() {
-		return length;
-	}
-
-	public void setLength(int length) {
-		this.length = length;
-	}
-
-	public MagicLevel[] getMagicLevel() {
-		return magicLevel;
-	}
-
-	public void setMagicLevel(MagicLevel[] magicLevel) {
-		this.magicLevel = magicLevel;
+	public void write(BufferedWriter out) {
+		// TODO Auto-generated method stub
+		try {
+			out.write("\t\t\t<" + this.name + ">\n");
+			for(int i = 0; i < this.length; i++) {
+				this.magicLevel[i].write(out);
+			}
+			out.write("\t\t\t</" + this.name + ">\n");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 }

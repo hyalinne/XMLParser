@@ -1,5 +1,8 @@
 package data;
 
+import java.io.BufferedWriter;
+import java.io.IOException;
+
 import org.w3c.dom.Element;
 
 public class Stat {
@@ -17,28 +20,17 @@ public class Stat {
 		}
 	}
 
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public int getLength() {
-		return length;
-	}
-
-	public void setLength(int length) {
-		this.length = length;
-	}
-
-	public Status[] getStats() {
-		return stats;
-	}
-
-	public void setStats(Status[] stats) {
-		this.stats = stats;
+	public void write(BufferedWriter out) {
+		// TODO Auto-generated method stub
+		try {
+			out.write("\t\t<" + this.name + ">\n");
+			for(int i = 0; i < this.length; i++) {
+				this.stats[i].write(out);
+			}
+			out.write("\t\t</" + this.name + ">\n");	
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 }

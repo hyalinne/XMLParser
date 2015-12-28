@@ -1,5 +1,8 @@
 package data;
 
+import java.io.BufferedWriter;
+import java.io.IOException;
+
 import org.w3c.dom.Element;
 
 public class RaceKind {
@@ -12,20 +15,14 @@ public class RaceKind {
 		this.racePower = new RacePower((Element) item.getChildNodes().item(1));
 	}
 
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public RacePower getRacePower() {
-		return racePower;
-	}
-
-	public void setRacePower(RacePower racePower) {
-		this.racePower = racePower;
+	public void write(BufferedWriter out) {
+		try {
+			out.write("\t\t\t\t<" + this.name + ">\n");
+			this.racePower.write(out);
+			out.write("\t\t\t\t</" + this.name + ">\n");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 }

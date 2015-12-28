@@ -1,12 +1,15 @@
 package data;
 
+import java.io.BufferedWriter;
+import java.io.IOException;
+
 import org.w3c.dom.Element;
 
 public class RaceType {
 	private String name;
 	private int length;
 	private RaceKind[] raceKind;
-	
+
 	public RaceType(Element item) {
 		// TODO Auto-generated constructor stub
 		this.name = item.getNodeName();
@@ -17,28 +20,17 @@ public class RaceType {
 		}
 	}
 
-	public String getName() {
-		return name;
+	public void write(BufferedWriter out) {
+		try {
+			out.write("\t\t\t<" + this.name + ">\n");
+			for(int i = 0; i < this.length; i++) {
+				this.raceKind[i].write(out);
+			}
+			out.write("\t\t\t</" + this.name + ">\n");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public int getLength() {
-		return length;
-	}
-
-	public void setLength(int length) {
-		this.length = length;
-	}
-
-	public RaceKind[] getRaceKind() {
-		return raceKind;
-	}
-
-	public void setRaceKind(RaceKind[] raceKind) {
-		this.raceKind = raceKind;
-	}
 
 }

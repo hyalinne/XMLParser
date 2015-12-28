@@ -1,5 +1,8 @@
 package data;
 
+import java.io.BufferedWriter;
+import java.io.IOException;
+
 import org.w3c.dom.Element;
 
 public class Status {
@@ -12,20 +15,13 @@ public class Status {
 		this.text = item.getTextContent();
 	}
 
-	public String getName() {
-		return name;
+	public void write(BufferedWriter out) {
+		// TODO Auto-generated method stub
+		try {
+			out.write("\t\t\t<" + this.name + ">");
+			out.write(this.text + "</" + this.name + ">\n");	
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getText() {
-		return text;
-	}
-
-	public void setText(String text) {
-		this.text = text;
-	}
-
 }

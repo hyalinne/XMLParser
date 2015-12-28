@@ -1,5 +1,8 @@
 package data;
 
+import java.io.BufferedWriter;
+import java.io.IOException;
+
 import org.w3c.dom.Element;
 
 public class RacePower {
@@ -16,36 +19,13 @@ public class RacePower {
 		this.attributeValue = item.getAttributes().item(0).getTextContent();
 	}
 
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getText() {
-		return text;
-	}
-
-	public void setText(String text) {
-		this.text = text;
-	}
-
-	public String getAttribute() {
-		return attribute;
-	}
-
-	public void setAttribute(String attribute) {
-		this.attribute = attribute;
-	}
-	
-	public String getAttributeValue() {
-		return attributeValue;
-	}
-
-	public void setAttributeValue(String attributeValue) {
-		this.attributeValue = attributeValue;
+	public void write(BufferedWriter out) {
+		try {
+			out.write("\t\t\t\t\t<" + this.name + " " + this.attribute +"='" + this.attributeValue + "'>");
+			out.write(this.text + "</" + this.name + ">\n");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 }
