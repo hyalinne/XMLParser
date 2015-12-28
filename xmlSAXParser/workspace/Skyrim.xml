@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Skyrim xmlns="http://uxmlab.mju.ac.kr/Skyrim" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://uxmlab.mju.ac.kr/Skyrim ./skyrim.xsd">
+  <character>
+    <race>
+      <human>
+        <nord>
+		  <race_power type='nord'>Shout of Battle</race_power>
+        </nord>
+        <breton>
+          <race_power type='breton'>Dragon Skin</race_power>
+        </breton>
+        <imperial>
+          <race_power type='imperial'>Voice of Emperor</race_power>
+        </imperial>
+        <redgard>
+          <race_power type='redgard'>Adrenaline</race_power>
+        </redgard>
+      </human>
+      <elven>
+        <dunmer>
+          <race_power type='dunmer'>Wrath of Ancestor</race_power>
+        </dunmer>
+        <bosmer>
+          <race_power type='bosmer'>Command Animals</race_power>
+        </bosmer>
+        <altmer>
+          <race_power type='altmer'>Highborn</race_power>
+        </altmer>
+        <orc>
+          <race_power type='orc'>Fury of Berserker</race_power>
+        </orc>
+      </elven>
+      <beast>
+        <khajiit>
+          <race_power type='khajiit'>Night Eyes</race_power>
+        </khajiit>
+        <argonian>
+          <race_power type='argonian'>Histskin</race_power>
+        </argonian>
+      </beast>
+    </race>
+    <stat>
+      <health>health</health>
+      <magicka>magicka</magicka>
+      <stamina>stamina</stamina>
+    </stat>
+    <magic>
+      <desturction>
+        <novice type='desturction'>
+          <spray>
+            <fire type='spray'>flame</fire>
+            <ice type='spray'>frost</ice>
+            <shock type='spray'>lightening</shock>
+          </spray>
+        </novice>
+        <apprentice type='desturction'>
+          <missile>
+            <fire type='missile'>flame</fire>
+            <ice type='missile'>frost</ice>
+            <shock type='missile'>lightening</shock>
+          </missile>
+          <rune>
+            <fire type='rune'>Rune</fire>
+            <ice type='rune'>Rune</ice>
+            <shock type='rune'>Rune</shock>
+          </rune>
+        </apprentice>
+        <adept type='desturction'>
+          <area_missile>
+            <fire type='area_missile'>fire</fire>
+            <ice type='area_missile'>frost</ice>
+            <shock type='area_missile'>chain</shock>
+          </area_missile>
+          <cloak>
+            <fire type='cloak'>cloak</fire>
+            <ice type='cloak'>cloak</ice>
+            <shock type='cloak'>cloak</shock>
+          </cloak>
+        </adept>
+        <expert type='desturction'>
+          <heavy_missile>
+            <fire type='heavy_missile'>missile</fire>
+            <ice type='heavy_missile'>missile</ice>
+            <shock type='heavy_missile'>missile</shock>
+          </heavy_missile>
+          <wall>
+            <fire type='wall'>wall</fire>
+            <ice type='wall'>wall</ice>
+            <shock type='wall'>wall</shock>
+          </wall>
+        </expert>
+        <master type='desturction'>
+          <storm>
+            <fire type='storm'>storm</fire>
+            <ice type='storm'>storm</ice>
+            <shock type='storm'>storm</shock>
+          </storm>
+        </master>
+      </desturction>
+    </magic>
+  </character>
+</Skyrim>
