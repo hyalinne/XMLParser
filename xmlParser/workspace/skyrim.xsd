@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://uxmlab.mju.ac.kr/Skyrim" targetNamespace="http://uxmlab.mju.ac.kr/Skyrim" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="Skyrim" type="rootType"/>
+
+	<xs:complexType name="rootType">
+		<xs:sequence>
+			<xs:element name="character" type="characterType" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="characterType">
+		<xs:sequence>
+			<xs:element name="race" type="raceListType" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="stat" type="statType" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="magic" type="magicListType" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="raceListType">
+		<xs:sequence>
+			<xs:element name="human" type="humanType" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="elven" type="elvenType" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="beast" type="beastType" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="humanType">
+		<xs:sequence>
+			<xs:element name="nord" type="raceType" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="breton" type="raceType" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="imperial" type="raceType" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="redgard" type="raceType" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="elvenType">
+		<xs:sequence>
+			<xs:element name="dunmer" type="raceType" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="bosmer" type="raceType" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="altmer" type="raceType" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="orc" type="raceType" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="beastType">
+		<xs:sequence>
+			<xs:element name="khajiit" type="raceType" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="argonian" type="raceType" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="raceType">
+		<xs:sequence>
+			<xs:element name="race_power" type="powerType"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="powerType">
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute name="type" type="xs:string" use="required"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+
+	<xs:complexType name="statType">
+		<xs:sequence>
+			<xs:element name="health" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="magicka" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="stamina" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="magicListType">
+		<xs:sequence>
+			<xs:choice>
+				<xs:element name="desturction" type="magicKindType"/>
+				<xs:element name="alternation" type="magicKindType"/>
+				<xs:element name="illusiton" type="magicKindType"/>
+				<xs:element name="restroration" type="magicKindType"/>
+			</xs:choice>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="magicKindType">
+		<xs:sequence>
+			<xs:element name="novice" type="levelType" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="apprentice" type="levelType" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="adept" type="levelType" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="expert" type="levelType" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="master" type="levelType" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="levelType">
+		<xs:sequence>
+			<xs:element name="spray" type="magicType" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="missile" type="magicType" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="rune" type="magicType" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="area_missile" type="magicType" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="cloak" type="magicType" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="heavy_missile" type="magicType" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="wall" type="magicType" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="storm" type="magicType" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+		<xs:attribute name="type" type="xs:string" use="required"/>
+	</xs:complexType>
+	
+	<xs:complexType name="magicType">
+		<xs:sequence>
+			<xs:element name="fire" type="elementType" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="ice" type="elementType" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="shock" type="elementType" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="elementType">
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute name="type" type="xs:string" use="required"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+
+</xs:schema>

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Skyrim xmlns="http://uxmlab.mju.ac.kr/Skyrim" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://uxmlab.mju.ac.kr/Skyrim ./skyrim.xsd">
+  <character>
+    <race>
+      <human>
+        <nord>
+		  <race_power type='nord'>전투의 함성</race_power>
+        </nord>
+        <breton>
+          <race_power type='breton'>용의 피부</race_power>
+        </breton>
+        <imperial>
+          <race_power type='imperial'>황제의 목소리</race_power>
+        </imperial>
+        <redgard>
+          <race_power type='redgard'>아드레날린 증폭</race_power>
+        </redgard>
+      </human>
+      <elven>
+        <dunmer>
+          <race_power type='dunmer'>조상의 분노</race_power>
+        </dunmer>
+        <bosmer>
+          <race_power type='bosmer'>동물 제어</race_power>
+        </bosmer>
+        <altmer>
+          <race_power type='altmer'>고귀한 혈통</race_power>
+        </altmer>
+        <orc>
+          <race_power type='orc'>광전사의 격노</race_power>
+        </orc>
+      </elven>
+      <beast>
+        <khajiit>
+          <race_power type='khajiit'>밤의 눈</race_power>
+        </khajiit>
+        <argonian>
+          <race_power type='argonian'>히스트스킨</race_power>
+        </argonian>
+      </beast>
+    </race>
+    <stat>
+      <health>체력</health>
+      <magicka>메지카</magicka>
+      <stamina>스테미나</stamina>
+    </stat>
+    <magic>
+      <desturction>
+        <novice type='desturction'>
+          <spray>
+            <fire type='spray'>불꽃</fire>
+            <ice type='spray'>냉각</ice>
+            <shock type='spray'>전격</shock>
+          </spray>
+        </novice>
+        <apprentice type='desturction'>
+          <missile>
+            <fire type='missile'>파이어볼트</fire>
+            <ice type='missile'>아이스볼트</ice>
+            <shock type='missile'>라이트닝볼트</shock>
+          </missile>
+          <rune>
+            <fire type='rune'>화염 룬</fire>
+            <ice type='rune'>냉기 룬</ice>
+            <shock type='rune'>전격 룬</shock>
+          </rune>
+        </apprentice>
+        <adept type='desturction'>
+          <area_missile>
+            <fire type='area_missile'>파이어볼</fire>
+            <ice type='area_missile'>냉기 폭풍</ice>
+            <shock type='area_missile'>체인 라이트닝</shock>
+          </area_missile>
+          <cloak>
+            <fire type='cloak'>화염 망토</fire>
+            <ice type='cloak'>냉기 망토</ice>
+            <shock type='cloak'>전기 망토</shock>
+          </cloak>
+        </adept>
+        <expert type='desturction'>
+          <heavy_missile>
+            <fire type='heavy_missile'>소각</fire>
+            <ice type='heavy_missile'>아이스 스피어</ice>
+            <shock type='heavy_missile'>썬더볼트</shock>
+          </heavy_missile>
+          <wall>
+            <fire type='wall'>화염 기둥</fire>
+            <ice type='wall'>냉기 기둥</ice>
+            <shock type='wall'>전격 기둥</shock>
+          </wall>
+        </expert>
+        <master type='desturction'>
+          <storm>
+            <fire type='storm'>화염 폭풍</fire>
+            <ice type='storm'>블리자드</ice>
+            <shock type='storm'>전격 폭풍</shock>
+          </storm>
+        </master>
+      </desturction>
+    </magic>
+  </character>
+</Skyrim>
