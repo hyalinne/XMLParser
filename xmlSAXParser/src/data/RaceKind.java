@@ -3,16 +3,21 @@ package data;
 import java.io.BufferedWriter;
 import java.io.IOException;
 
-import org.w3c.dom.Element;
-
 public class RaceKind {
 	private String name;
 	private RacePower racePower;
 	
-	public RaceKind(Element item) {
+	public RaceKind(String name) {
 		// TODO Auto-generated constructor stub
-		this.name = item.getNodeName();
-		this.racePower = new RacePower((Element) item.getChildNodes().item(1));
+		this.name = name;
+	}
+	
+	public void setRacePower(RacePower power) {
+		this.racePower = power;
+	}
+	
+	public void addText(String text) {
+		this.racePower.setText(text);
 	}
 
 	public void write(BufferedWriter out) {

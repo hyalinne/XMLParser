@@ -3,20 +3,21 @@ package data;
 import java.io.BufferedWriter;
 import java.io.IOException;
 
-import org.w3c.dom.Element;
-
 public class MagicElement {
 	private String name;
 	private String text;
 	private String attribute;
 	private String attributeValue;
 
-	public MagicElement(Element item) {
+	public MagicElement(String name, String attr, String attrV) {
 		// TODO Auto-generated constructor stub
-		this.name = item.getNodeName();
-		this.text = item.getTextContent();
-		this.attribute = item.getAttributes().item(0).getNodeName();
-		this.attributeValue = item.getAttributes().item(0).getTextContent();
+		this.name = name;
+		this.attribute = attr;
+		this.attributeValue = attrV;
+	}
+	
+	public void setText(String text) {
+		this.text = text;
 	}
 
 	public void write(BufferedWriter out) {

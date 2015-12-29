@@ -2,30 +2,37 @@ package data;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
-
-import org.w3c.dom.Element;
+import java.util.ArrayList;
 
 public class Stat {
 	private String name;
-	private int length;
-	private Status[] stats;
+	private ArrayList<Status> stats;
+	private int index;
 	
-	public Stat(Element item) {
-		// TODO Auto-generated constructor stub
-		this.name = item.getNodeName();
-		this.length = item.getChildNodes().getLength()/2;
-		this.stats = new Status[length];
-		for(int i = 0; i < this.length; i++) {
-			this.stats[i] = new Status((Element) item.getChildNodes().item(i*2 + 1));
-		}
+	public Stat() {
+		this.stats = new ArrayList<Status>();
+		this.index = -1;
+	}
+	
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	public void addStatus(Status status) {
+		this.stats.add(status);
+		this.index++;
+	}
+	
+	public void addText(String text) {
+		this.stats.get(index).setText(text);
 	}
 
 	public void write(BufferedWriter out) {
 		// TODO Auto-generated method stub
 		try {
 			out.write("\t\t<" + this.name + ">\n");
-			for(int i = 0; i < this.length; i++) {
-				this.stats[i].write(out);
+			for(Status temp : this.stats) {
+				temp.write(out);
 			}
 			out.write("\t\t</" + this.name + ">\n");	
 		} catch (IOException e) {

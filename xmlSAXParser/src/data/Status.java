@@ -3,16 +3,17 @@ package data;
 import java.io.BufferedWriter;
 import java.io.IOException;
 
-import org.w3c.dom.Element;
-
 public class Status {
 	private String name;
 	private String text;
 
-	public Status(Element item) {
+	public Status(String name) {
 		// TODO Auto-generated constructor stub
-		this.name = item.getNodeName();
-		this.text = item.getTextContent();
+		this.name = name;
+	}
+	
+	public void setText(String text) {
+		this.text = text;
 	}
 
 	public void write(BufferedWriter out) {

@@ -2,34 +2,43 @@ package data;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
-
-import org.w3c.dom.Element;
+import java.util.ArrayList;
 
 public class MagicLevel {
 	private String name;
-	private int length;
-	private MagicType[] magicTypes;
+	private ArrayList<MagicType> magicTypes;
 	private String attribute;
 	private String attributeValue;
+	private int index;
 
-	public MagicLevel(Element item) {
+	public MagicLevel(String name, String attr, String attrV) {
 		// TODO Auto-generated constructor stub
-		this.name = item.getNodeName();
-		this.length = item.getChildNodes().getLength()/2;
-		this.magicTypes = new MagicType[this.length];
-		for(int i = 0; i < this.length; i++) {
-			this.magicTypes[i] = new MagicType((Element) item.getChildNodes().item(i*2 + 1));
-		}
-		this.attribute = item.getAttributes().item(0).getNodeName();
-		this.attributeValue = item.getAttributes().item(0).getTextContent();
+		this.name = name;
+		this.attribute = attr;
+		this.attributeValue = attrV;
+		this.index = -1;
+		this.magicTypes = new ArrayList<MagicType>();
+	}
+	
+	public void addMagicType(MagicType magicType) {
+		this.magicTypes.add(magicType);
+		this.index++;
+	}
+	
+	public void addMagicElement(MagicElement magicElement) {
+		this.magicTypes.get(index).addMagicElement(magicElement);
+	}
+	
+	public void addText(String text) {
+		this.magicTypes.get(index).addText(text);
 	}
 
 	public void write(BufferedWriter out) {
 		// TODO Auto-generated method stub
 		try {
 			out.write("\t\t\t\t<" + this.name + " " + this.attribute + "='" + this.attributeValue + "'>\n");
-			for(int i = 0; i < this.length; i++) {
-				this.magicTypes[i].write(out);
+			for(MagicType temp : this.magicTypes) {
+				temp.write(out);
 			}
 			out.write("\t\t\t\t</" + this.name + ">\n");
 		} catch (IOException e) {

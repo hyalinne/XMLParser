@@ -2,29 +2,45 @@ package data;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 
-import org.w3c.dom.Element;
 
 public class Race {
-	private RaceType[] raceType;
-	private int length;
+	private ArrayList<RaceType> raceTypes;
+	private int index;
 	private String name;
 	
-	public Race(Element item) {
-		// TODO Auto-generated constructor stub
-		this.name = item.getNodeName();
-		this.length = item.getChildNodes().getLength()/2;
-		this.raceType = new RaceType[this.length];
-		for(int i = 0; i < this.length; i++) {
-			this.raceType[i] = new RaceType((Element) item.getChildNodes().item(i*2 + 1));
-		}
+	public Race() {
+		this.raceTypes = new ArrayList<RaceType>();
+		this.index = -1;
+	}
+	
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	public void addRaceType(RaceType raceType) {
+		this.raceTypes.add(raceType);
+		this.index++;
+	}
+
+	public void addRaceKind(RaceKind temp) {
+		this.raceTypes.get(index).addRaceKind(temp);	
+	}
+	
+	public void addRacePower(RacePower power) {
+		this.raceTypes.get(index).addRacePower(power);
+	}
+	
+	public void addText(String text) {
+		this.raceTypes.get(index).addText(text);
 	}
 	
 	public void write(BufferedWriter out) {
 		try {
 			out.write("\t\t<" + this.name + ">\n");
-			for(int i = 0; i < this.length; i++) {
-				this.raceType[i].write(out);
+			for(RaceType temp : raceTypes) {
+				temp.write(out);
 			}
 			out.write("\t\t</" + this.name + ">\n");
 		} catch (IOException e) {

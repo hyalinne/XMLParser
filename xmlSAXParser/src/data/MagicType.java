@@ -2,30 +2,35 @@ package data;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
-
-import org.w3c.dom.Element;
+import java.util.ArrayList;
 
 public class MagicType {
 	private String name;
-	private int length;
-	private MagicElement[] magicElements;
+	private ArrayList<MagicElement> magicElements;
+	private int index;
 	
-	public MagicType(Element item) {
+	public MagicType(String name) {
 		// TODO Auto-generated constructor stub
-		this.name = item.getNodeName();
-		this.length = item.getChildNodes().getLength()/2;
-		this.magicElements = new MagicElement[this.length];
-		for(int i = 0; i < this.length; i++) {
-			this.magicElements[i] = new MagicElement((Element) item.getChildNodes().item(i*2 + 1));
-		}
+		this.name = name;
+		this.index = -1;
+		this.magicElements = new ArrayList<MagicElement>();
+	}
+	
+	public void addMagicElement(MagicElement m) {
+		this.magicElements.add(m);
+		index++;
+	}
+	
+	public void addText(String text) {
+		this.magicElements.get(index).setText(text);
 	}
 
 	public void write(BufferedWriter out) {
 		// TODO Auto-generated method stub
 		try {
 			out.write("\t\t\t\t\t<" + this.name + ">\n");
-			for(int i = 0; i < this.length; i++) {
-				this.magicElements[i].write(out);
+			for(MagicElement temp : this.magicElements) {
+				temp.write(out);
 			}
 			out.write("\t\t\t\t\t</" + this.name + ">\n");
 		} catch (IOException e) {
