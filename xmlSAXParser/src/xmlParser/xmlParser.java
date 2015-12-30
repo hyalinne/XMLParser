@@ -13,7 +13,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class Main {
+public class xmlParser {
 	private Skyrim skyrim;
 	private data.Character character;
 	private Race race;
@@ -21,14 +21,14 @@ public class Main {
 	private Magic magic;
 
 	public static void main(String argv[]) {
-		Main main = new Main();
+		xmlParser main = new xmlParser();
 		String fromPath = "./workspace/Skyrim.xml";
 		String toPath = "./workspace/Skyrim2.xml";
-		main.read(fromPath);
-		main.write(toPath);
+		main.readXML(fromPath);
+		main.writeXML(toPath);
 	} 
 
-	public Main() {
+	public xmlParser() {
 		this.skyrim = new Skyrim();
 		this.character = new data.Character();
 		this.race = new Race();
@@ -39,7 +39,7 @@ public class Main {
 		this.character.setMagic(magic);
 	}
 
-	public void write(String filePath) {
+	public void writeXML(String filePath) {
 		try {
 			BufferedWriter out = new BufferedWriter(new FileWriter(filePath));
 			skyrim.write(out);
@@ -49,7 +49,7 @@ public class Main {
 		}
 	}
 
-	public void read(String filePath) {
+	public void readXML(String filePath) {
 		try {
 			SAXParserFactory factory = SAXParserFactory.newInstance();
 			SAXParser parser = factory.newSAXParser();
